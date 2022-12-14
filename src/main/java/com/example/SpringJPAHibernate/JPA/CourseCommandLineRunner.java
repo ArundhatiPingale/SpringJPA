@@ -1,32 +1,31 @@
-package com.example.SpringJPAHibernate.jdbc;
+package com.example.SpringJPAHibernate.JPA;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CourseJdbcCommandLineRunner implements CommandLineRunner {
+public class CourseCommandLineRunner implements CommandLineRunner {
 
 	@Autowired
-	private CourseJdbcRepository cjr;
+	private CourseJPARepository jparepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		cjr.insert(
+		jparepository.insert(
 				new Course (2, "Spring","James"));
 
-		cjr.insert(
+		jparepository.insert(
 				new Course (3, "Jpa","chaerl"));
-		cjr.insert(
+		jparepository.insert(
 				new Course (4, "Hibernate","Chico"));
 		
+		jparepository.deletbyId(4);
+		System.out.println(jparepository.findbyId(2));
+		System.out.println(jparepository.findbyId(3));
 		
-		cjr.deletebyId(4);
-		
-		Course c= cjr.selectbyId(2);
-		
-		System.out.println(c.toString());
 	}
 	
 	
