@@ -24,6 +24,9 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
 		
 		cjr.deletebyId(4);
 		
+		Course c= cjr.selectbyId(2);
+		
+		System.out.println(c.toString());
 	}
 	
 	
