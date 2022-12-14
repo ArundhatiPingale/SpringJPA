@@ -13,7 +13,16 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		cjr.insert();
+		cjr.insert(
+				new Course (2, "Spring","James"));
+
+		cjr.insert(
+				new Course (3, "Jpa","chaerl"));
+		cjr.insert(
+				new Course (4, "Hibernate","Chico"));
+		
+		
+		cjr.deletebyId(4);
 		
 	}
 	

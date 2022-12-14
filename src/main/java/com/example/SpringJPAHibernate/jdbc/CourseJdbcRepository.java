@@ -14,11 +14,20 @@ public class CourseJdbcRepository {
 	
 	private static String INSERT_QUERY =
 			""" 
-					insert into  course (id , name , author) values (1 , 'Java' ,'John') ; 
+					insert into  course (id , name , author) values (?,?,?) ; 
 	          """;
-	public void insert()
+	
+	private static String DELETE_QUERY =
+			""" 
+					delete  from   course  where id = ? ; 
+	          """;
+	
+	public void insert(Course course)
 	{
-		springJdbcTemplate.update(INSERT_QUERY);
+		springJdbcTemplate.update(INSERT_QUERY, course.getId(), course.getName(), course.getAuthor());
 	}
-
+    public void deletebyId (int  id)
+    {
+    	springJdbcTemplate.update(DELETE_QUERY, id);
+    }
 }
